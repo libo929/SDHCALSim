@@ -74,6 +74,12 @@ void SDHCALPrimaryGeneratorAction::GeneratePrimaries(G4Event* event)
 		gun->generatePrimary(event) ;
 }
 
+void SDHCALPrimaryGeneratorAction::setGunParticle(G4String particleName)
+{
+	for ( const auto& gun : gunVec )
+		gun->SetParticleDefinition(G4ParticleTable::GetParticleTable()->FindParticle( particleName )) ;
+}
+
 void SDHCALPrimaryGeneratorAction::print() const
 {
 	G4cout << "Primary particles : " << G4endl ;

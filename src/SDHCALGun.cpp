@@ -29,6 +29,8 @@ SDHCALGun::SDHCALGun(nlohmann::json json)
 	if ( json.count("particleName") )
 		options.particleName = json.at("particleName").get<G4String>() ;
 
+	SetParticleDefinition( G4ParticleTable::GetParticleTable()->FindParticle( options.particleName ) ) ;
+
 	if ( json.count("energy") )
 	{
 		auto energyParam = json.at("energy") ;
@@ -165,7 +167,7 @@ SDHCALGun::SDHCALGun(nlohmann::json json)
 
 void SDHCALGun::generatePrimary(G4Event* event)
 {
-	SetParticleDefinition( G4ParticleTable::GetParticleTable()->FindParticle( options.particleName ) ) ;
+	//G4cout << "generatePrimary: " << options.particleName << G4endl;
 
 	if ( options.cosmicGun )
 		shootForCosmic() ;

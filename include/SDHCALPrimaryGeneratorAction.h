@@ -46,6 +46,8 @@ class SDHCALPrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
 		inline G4double getPrimaryEnergy() const { return primaryEnergy ; }
 		inline const G4ParticleDefinition* getParticleDefinition() const { return particleDefinition ; }
 
+		void setGunParticle(G4String particleName);
+
 		void print() const ;
 
 

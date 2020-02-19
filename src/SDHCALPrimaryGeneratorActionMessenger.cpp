@@ -133,8 +133,10 @@ SDHCALPrimaryGeneratorActionMessenger::~SDHCALPrimaryGeneratorActionMessenger()
 void SDHCALPrimaryGeneratorActionMessenger::SetNewValue(G4UIcommand* command , G4String value)
 {
 	if ( command == particleDefinitionCmd )
-		generator->setParticleDefinition(value) ;
-
+	{
+		G4cout << "Set new particle: " << value << G4endl;
+		generator->setGunParticle(value) ;
+	}
 	else if ( command == posOptionCmd )
 		generator->setGunOptionPosition(value) ;
 	else if ( command == posXCmd )
