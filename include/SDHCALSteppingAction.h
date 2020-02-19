@@ -88,7 +88,7 @@ class SDHCALSteppingAction : public G4UserSteppingAction
 		std::map<G4int , G4double> depositedEnergyPerParticleType = {} ;
 		std::map<G4int , G4double> leakedEnergyPerParticleType = {} ;
 
-		G4double leakEnergy = 0.0 ;
+		//G4double leakEnergy = 0.0 ;
 		G4double sideleakEnergy = 0.0 ;
 		G4double frontleakEnergy = 0.0 ;
 		G4double rearleakEnergy = 0.0 ;
