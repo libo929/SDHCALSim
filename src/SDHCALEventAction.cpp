@@ -119,6 +119,7 @@ void SDHCALEventAction::EndOfEventAction(const G4Event* event)
 	G4cout << "average time : " << averageTime << G4endl ;
 
 
+	rootWriter->setRunNumber( G4RunManager::GetRunManager()->GetCurrentRun()->GetRunID() ) ;
 	rootWriter->setEventNumber( event->GetEventID() ) ;
 	rootWriter->setNHit( nRealHits ) ;
 	rootWriter->setPrimaryID( particleID ) ;

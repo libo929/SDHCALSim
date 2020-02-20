@@ -42,6 +42,7 @@ class SDHCALRootWriter
 
 		void fillTree() ;
 
+		inline void setRunNumber(int value) { runNumber = value ; }
 		inline void setEventNumber(int value) { eventNumber = value ; }
 		inline void setNHit(int value) { nHit = value ; }
 		inline void setPrimaryID(int value) { primaryID = value ; }
@@ -66,6 +67,7 @@ class SDHCALRootWriter
 		TFile* file {} ;
 		TTree* tree {} ;
 
+		int runNumber {} ;
 		int eventNumber {} ;
 		int nHit {} ;
 		int primaryID {} ;

@@ -20,6 +20,7 @@ void SDHCALRootWriter::createRootFile( std::string fileName )
 	file = new TFile(fileName.c_str() , "RECREATE") ;
 	tree = new TTree("tree" , "tree") ;
 
+	tree->Branch("runNumber" , &runNumber) ;
 	tree->Branch("eventNumber" , &eventNumber) ;
 	tree->Branch("nHit" , &nHit) ;
 	tree->Branch("primaryID" , &primaryID) ;

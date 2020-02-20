@@ -15,8 +15,10 @@ class G4Run ;
 class SDHCALRunAction : public G4UserRunAction
 {
 	public :
-		SDHCALRunAction() = default ;
-		virtual ~SDHCALRunAction() = default ;
+		SDHCALRunAction() = default;
+
+		SDHCALRunAction(G4String fileName) ;
+		virtual ~SDHCALRunAction() ;
 
 		G4Run* GenerateRun() ;
 
@@ -28,6 +30,8 @@ class SDHCALRunAction : public G4UserRunAction
 		inline void setLcioFileName(G4String name) { lcioFileName = name ; }
 		inline void setRootFileName(G4String name) { rootFileName = name ; }
 
+		static void setCreateGlobleWriter() { createGlobalWriter = true; }
+
 		SDHCALRunAction(const SDHCALRunAction&) = delete ;
 		void operator=(const SDHCALRunAction&) = delete ;
 
@@ -36,6 +40,9 @@ class SDHCALRunAction : public G4UserRunAction
 
 		G4String lcioFileName = "test.slcio" ;
 		G4String rootFileName = "test.root" ;
+
+	private:
+		static bool createGlobalWriter ;
 } ;
 
 #endif //SDHCALRunAction_h

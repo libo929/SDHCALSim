@@ -72,8 +72,8 @@ int main(int argc , char** argv)
 	
 	G4String jsonFileName = argv[1] ;
 
-	//Params params = readJsonFile( jsonFileName ) ;
-	Params params;
+	Params params = readJsonFile( jsonFileName ) ;
+	//Params params;
 
 	CLHEP::HepRandom::setTheSeed(params.seed) ;
 
@@ -89,10 +89,11 @@ int main(int argc , char** argv)
 	// Primary generator action
 	runManager->SetUserAction( new SDHCALPrimaryGeneratorAction( jsonFileName ) ) ;
 
-	SDHCALRunAction* runAction = new SDHCALRunAction() ;
+	SDHCALRunAction::setCreateGlobleWriter();
+	SDHCALRunAction* runAction = new SDHCALRunAction(params.outputFileName) ;
 
-	runAction->setLcioFileName( params.outputFileName + G4String(".slcio") ) ;
-	runAction->setRootFileName( params.outputFileName + G4String(".root") ) ;
+	//runAction->setLcioFileName( params.outputFileName + G4String(".slcio") ) ;
+	//runAction->setRootFileName( params.outputFileName + G4String(".root") ) ;
 
 	runManager->SetUserAction( runAction ) ;
 	runManager->SetUserAction( new SDHCALEventAction(runAction) ) ;
@@ -118,8 +119,6 @@ int main(int argc , char** argv)
 	}
 
 	ui->SessionStart();
-
-	//runManager->BeamOn(params.nEvent) ;
 
 	delete ui;
 	delete visManager;
